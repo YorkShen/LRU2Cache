@@ -1,25 +1,30 @@
 package me.york;
 
 
-/**
- * Created by sy on 15/7/24.
- */
-class Node<V extends Comparable<V>> implements Comparable<Node<V>> {
+import com.sun.istack.internal.NotNull;
+
+class Node<K, V extends Comparable<V>> implements Comparable<Node<K, V>> {
+    private K key;
     private V value;
     private int index;
     private long lastTime;
     private long lastSecondTime;
-    public static long INIT=-1;
+    public static long INIT = -1;
 
-    Node(V value){
-        this.value=value;
-        lastTime=INIT;
-        lastSecondTime=INIT;
+    Node(K key, V value) {
+        this.key = key;
+        this.value = value;
+        lastTime = INIT;
+        lastSecondTime = INIT;
     }
 
     @Override
-    public int compareTo(Node<V> o) {
-        return 0;
+    public int compareTo(@NotNull Node<K, V> o) {
+        return value.compareTo(o.getValue());
+    }
+
+    K getKey() {
+        return key;
     }
 
     V getValue() {
