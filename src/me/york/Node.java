@@ -20,7 +20,7 @@ class Node<K, V extends Comparable<V>> implements Comparable<Node<K, V>> {
 
     @Override
     public int compareTo(@NotNull Node<K, V> o) {
-        return value.compareTo(o.getValue());
+        return (int)(lastSecondTime-o.getLastSecondTime());
     }
 
     K getKey() {
